@@ -1,5 +1,7 @@
 const {
   client,
+  User,
+  PropMgrs
   // declare your model imports here
   // for example, User
 } = require('./');
@@ -9,6 +11,29 @@ async function buildTables() {
     client.connect();
 
     // drop tables in correct order
+    await client.query(`
+      drop table if exists users;
+      drop table if exists propMgrs;
+      drop table if exists descriptions;
+
+      CREATE TABLE users (
+        id SERIAL PRIMARY KEY,
+        username varchar(15) UNIQUE NOT NULL,
+        password varchar(255) NOT NULL,
+        isAdmin BOOLEAN DEFAULT false
+      );
+
+      CREATE TABLE propMgrs (
+        id SERIAL PRIMARY KEY,
+        name varchar(255) NOT NULL,
+        title varchar(255)
+      );
+
+      CREATE TABLE descriptions (
+        id SERIAL PRIMARY KEY,
+        description text
+      );
+    `)
 
     // build tables in correct order
   } catch (error) {
@@ -21,6 +46,45 @@ async function populateInitialData() {
     // create useful starting data by leveraging your
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
+
+    const createInitialUsers = async() => {
+      console.log('starting to create users...');
+
+      const usersToCreate = [
+        {
+          username: 'admin',
+          password: 'Mastercare41!',
+          isAdmin: true,
+        }
+      ];
+      const users = await Promise.all(
+        usersToCreate.map(User.createUser)
+      );
+      console.log('users create: ', users)
+      console.log('finished creating users')
+    }
+
+    const createInitialPropMgrs = async() => {
+      console.log('starting to create property managers...')
+      const propMgrsToCreate = [
+        {name: 'Patty Elmore'},
+        {name: 'Bill Planek'},
+        {name: 'Barry Dardero'},
+        {name: 'Mike Vitek'},
+        {
+          name: 'Ryan Reid',
+          title: 'Administrative Assistant'
+        }
+      ];
+      const propMgrs = await Promise.all(
+        propMgrsToCreate.map(PropMgrs.createManager)
+      );
+      console.log('property managers created: ', propMgrs);
+      console.log('finished creating property managers');
+    }
+
+    await createInitialUsers();
+    await createInitialPropMgrs();
   } catch (error) {
     throw error;
   }
