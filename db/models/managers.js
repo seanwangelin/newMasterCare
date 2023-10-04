@@ -2,20 +2,24 @@ const client = require('../client');
 
 async function createManager({
     name,
-    title
+    title,
+    phone,
+    email
   }) {
     try {
       const {
         rows: [manager],
       } = await client.query(
         `
-        INSERT INTO propMgrs(name, title)
-        VALUES ($1,$2)
+        INSERT INTO propMgrs(name, title, phone, email)
+        VALUES ($1,$2, $3, $4)
         returning *;
         `,
         [
           name,
-          title
+          title,
+          phone,
+          email
         ]
       );
   
