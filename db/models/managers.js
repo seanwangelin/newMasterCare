@@ -29,7 +29,20 @@ async function createManager({
       throw error;
     }
   }
+
+  async function getAllManagers() {
+    try {
+      const { rows } = await client.query(`
+      SELECT * FROM propMgrs;
+      `);
+
+      return rows;
+    } catch(err) {
+      throw err;
+    }
+  }
   
   module.exports = {
-    createManager
+    createManager,
+    getAllManagers
   }
