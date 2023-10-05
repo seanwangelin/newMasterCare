@@ -1,18 +1,16 @@
 const express = require("express");
-const router = express.Router();
+const managersRouter = express.Router();
 
-const {
-    createManager,
-    getAllManagers
-} = require('../db/models/managers');
+const { getAllManagers } = require("../db/models/managers");
 
-router.get('/', async (req, res) => {
+managersRouter.get("/", async (req, res, next) => {
+  try {
     const managers = await getAllManagers();
-
-    res.send({
-        managers,
-    });
+    res.send(managers);
+  } catch (err) {
+    console.log(err, "error getting managers");
+    next()
+  }
 });
 
-
-module.exports = router;
+module.exports = managersRouter;

@@ -27,7 +27,7 @@ async function buildTables() {
         id SERIAL PRIMARY KEY,
         name varchar(255) NOT NULL,
         title varchar(255),
-        phone bigint NOT NULL,
+        phone varchar(255) NOT NULL,
         email varchar(255)NOT NULL
       );
 
