@@ -2,7 +2,8 @@ const {
   client,
   User,
   PropMgrs,
-  Descriptions
+  Descriptions,
+  Services
   // declare your model imports here
   // for example, User
 } = require("./");
@@ -16,6 +17,7 @@ async function buildTables() {
       drop table if exists users;
       drop table if exists propMgrs;
       drop table if exists descriptions;
+      drop table if exists services;
 
       CREATE TABLE users (
         id SERIAL PRIMARY KEY,
@@ -36,6 +38,11 @@ async function buildTables() {
         id SERIAL PRIMARY KEY,
         title varchar(255) NOT NULL,
         description text NOT NULL
+      );
+
+      CREATE TABLE services (
+        id SERIAL PRIMARY KEY,
+        service text
       );
     `);
 
@@ -134,9 +141,32 @@ async function populateInitialData() {
       console.log('finsished creating descriptions')
     }
 
+    const createInitialServices = async () => {
+      console.log('starting to create services...');
+      const servicesToCreate = [
+        {service: "Develop yearly budget based upon historical costs and anticipated changes"},
+        {service: "Provide monthly operating statements with budget comparison"},
+        {service: "Process resident assessments"},
+        {service: "Collect delinquent accounts"},
+        {service: "Administer accounts payable"},
+        {service: "Provide 24/7 emergency answering service"},
+        {service: "Coordinate building maintenance and repairs"},
+        {service: "Review ongoing repair and replacement needs"},
+        {service: "Provide a reference library for topics relating to Community/Condominium Associations"},
+        {service: "Create managed websites for individual Associations"},
+        {service: "Customize services for Associations with unique needs, like in-house janitorial services"},
+      ]
+      const services = await Promise.all(
+        servicesToCreate.map(Services.createService)
+      )
+      console.log("services created: ", services);
+      console.log("finished creating services");
+    }
+
     await createInitialUsers();
     await createInitialPropMgrs();
     await createInitialDescriptions();
+    await createInitialServices();
   } catch (error) {
     throw error;
   }
