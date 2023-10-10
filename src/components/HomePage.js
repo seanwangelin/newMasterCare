@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
 
 export default function HomePage() {
-
+  const [ managerString, setManagerString ] = useState([]);
+  
   const getManagers = async () => {
+    let managers = [];
+
     try {
       const response = await fetch("http://localhost:4000/api/managers/", {
-        method: 'GET',
+        method: "GET",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
       });
       const result = await response.json();
-      console.log("PROP MGRS:", result);
+      result.map((singleResult) => {
+        managers.push(singleResult.name);
+      });
+      // console.log('MANAGERS: ', managers)
+      setManagerString(managers);
+      
       return result;
     } catch (err) {
       throw err;
@@ -19,12 +27,18 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    getManagers()
-  })
+    getManagers();
+  },[])
+
+  console.log(managerString);
 
   return (
     <>
-      <div>hellooooooo</div>
+      {
+        managerString.map(manager => {
+          return <div key={manager}>{manager}</div>
+        })
+      }
     </>
   );
 }
