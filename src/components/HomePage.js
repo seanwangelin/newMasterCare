@@ -42,7 +42,7 @@ export default function HomePage() {
             {manager.title?<div>{manager.title}</div>:null}
             {manager.phone?<a href={`tel:${manager.phone}`}>{manager.phone}</a>:null}
             {manager.email?<a href={`mailto:${manager.email}`}>{manager.email}</a>:null}
-            </div>
+          </div>
         )
       })}
     </>
