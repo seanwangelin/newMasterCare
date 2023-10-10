@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
-  const [ managerString, setManagerString ] = useState([]);
-  
+  const [managerArray, setManagerArray] = useState([]);
+
   const getManagers = async () => {
     let managers = [];
 
@@ -15,11 +16,11 @@ export default function HomePage() {
       });
       const result = await response.json();
       result.map((singleResult) => {
-        managers.push(singleResult.name);
+        managers.push(singleResult);
       });
       // console.log('MANAGERS: ', managers)
-      setManagerString(managers);
-      
+      setManagerArray(managers);
+
       return result;
     } catch (err) {
       throw err;
@@ -28,17 +29,22 @@ export default function HomePage() {
 
   useEffect(() => {
     getManagers();
-  },[])
+  }, []);
 
-  console.log(managerString);
+  console.log(managerArray);
 
   return (
     <>
-      {
-        managerString.map(manager => {
-          return <div key={manager}>{manager}</div>
-        })
-      }
+      {managerArray.map((manager) => {
+        return (
+          <div key={manager.id}>
+            <div>{manager.name}</div>
+            {manager.title?<div>{manager.title}</div>:null}
+            {manager.phone?<a href={`tel:${manager.phone}`}>{manager.phone}</a>:null}
+            {manager.email?<a href={`mailto:${manager.email}`}>{manager.email}</a>:null}
+            </div>
+        )
+      })}
     </>
   );
 }
