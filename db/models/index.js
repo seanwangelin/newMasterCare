@@ -5,6 +5,7 @@ module.exports = {
   // and User: require('./user') here
   User: require('./user'),
   PropMgrs: require('./managers'),
+  Descriptions: require('./descriptions')
 };
 
 // then, in your API, you'll require the appropriate model

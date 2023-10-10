@@ -2,6 +2,7 @@ const {
   client,
   User,
   PropMgrs,
+  Descriptions
   // declare your model imports here
   // for example, User
 } = require("./");
@@ -33,7 +34,8 @@ async function buildTables() {
 
       CREATE TABLE descriptions (
         id SERIAL PRIMARY KEY,
-        description text
+        title varchar(255) NOT NULL,
+        description text NOT NULL
       );
     `);
 
@@ -101,8 +103,40 @@ async function populateInitialData() {
       console.log("finished creating property managers");
     };
 
+    const createInitialDescriptions = async () => {
+      console.log('starting to create descriptions...')
+      const descriptionsToCreate = [
+        {
+          title: "Our mission statement",
+          description: "Our Mission, as your premier provider of condominium management and maintenance services, is to provide individualized attention to the preservation and care of your property as well as implementation of cost effective policies and procedures to ensure the fiscal health of your Association."
+        },
+        {
+          title: "Welcome to Mastercare Building Services Inc",
+          description: "Mastercare is a full service property management company serving the Oak Park, River Forest and Forest Park communities. With over 32 years of experience in condominium management, Mastercare's dedicated service and individualized attention is the best choice for all of your property management needs."
+        },
+        {
+          title: "Our Approach",
+          description: "The Mastercare philosophy is to operate each property from the owners perspective, with a vital awareness of the goals and requests of board members and residents. Mastercare is a full service building management company committed to providing professional, cost effective and efficient property management services. We have an in-depth personal understanding of the needs of our clients property because we are property owners ourselves."
+        },
+        {
+          title: "Our Experience",
+          description: "Founded in 1986, Mastercare has over 28 years of property management experience. Our team of professionals are highly qualified and offer a broad range of experience, techical expertise and strong customer service. The team includes skilled account managers, attentive building engineers, reliable maintenance personnel, and dedicated property supervisors whose track-record and understanding of the business are critical to the success of your association."
+        },
+        {
+          title: "Community Involvement",
+          description: "Mastercare is commited to the local communities we serve. We believe that giving back is an important part of our company culture. Whether we sponsor local youth baseball, volunteer baking cookies in a solar oven at A Day in Our Village, try our hand at making Farmer's Market donuts, hit the links for a local charity or donate to one of the multiple worthy community organizations, we know that involvement and support is what helps communities thrive."
+        }
+      ]
+      const descriptions = await Promise.all(
+        descriptionsToCreate.map(Descriptions.createDescription)
+      );
+      console.log("descriptions created: ", descriptions)
+      console.log('finsished creating descriptions')
+    }
+
     await createInitialUsers();
     await createInitialPropMgrs();
+    await createInitialDescriptions();
   } catch (error) {
     throw error;
   }
