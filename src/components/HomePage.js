@@ -27,6 +27,24 @@ export default function HomePage() {
     }
   };
 
+  // const getDescriptions = async () => {
+
+  //   try {
+  //     const response = await fetch("http://localhost:4000/api/descriptions/", {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const result = await response.json();
+  //     console.log('DESCRIPTIONS: ',result)
+
+  //     // return result;
+  //   } catch (err) {
+  //     throw err;
+  //   }
+  // };
+
   useEffect(() => {
     getManagers();
   }, []);

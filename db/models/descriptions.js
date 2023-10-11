@@ -19,6 +19,19 @@ const createDescription = async ({title, description}) => {
     }
 }
 
+async function getAllDescriptions() {
+    try {
+      const { rows } = await client.query(`
+      SELECT * FROM descriptions;
+      `);
+
+      return rows;
+    } catch(err) {
+      throw err;
+    }
+  }
+
 module.exports = {
-    createDescription
+    createDescription,
+    getAllDescriptions
 }

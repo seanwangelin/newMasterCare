@@ -19,6 +19,19 @@ const createService = async ({service}) => {
     }
 }
 
+async function getAllServices() {
+    try {
+      const { rows } = await client.query(`
+      SELECT * FROM services;
+      `);
+
+      return rows;
+    } catch(err) {
+      throw err;
+    }
+  }
+
 module.exports = {
-    createService
+    createService,
+    getAllServices
 }
