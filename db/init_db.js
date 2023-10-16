@@ -36,7 +36,7 @@ async function buildTables() {
 
       CREATE TABLE descriptions (
         id SERIAL PRIMARY KEY,
-        title varchar(255) NOT NULL,
+        title varchar(255),
         description text NOT NULL
       );
 

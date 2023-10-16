@@ -19,4 +19,10 @@ apiRouter.use('/users', usersRouter);
 const managersRouter = require('./managers');
 apiRouter.use('/managers', managersRouter);
 
+const servicesRouter = require('./services');
+apiRouter.use('/services', servicesRouter);
+
+const descriptionsRouter = require('./descriptions');
+apiRouter.use('/descriptions', descriptionsRouter);
+
 module.exports = apiRouter;
