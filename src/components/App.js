@@ -11,6 +11,7 @@ import { default as About } from './About'
 import { default as Services } from './Services'
 import { default as Contact } from './Contact'
 import { default as Header } from './Header'
+import { default as Footer } from './Footer'
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState('');
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/Contact" element={<Contact />}/>
         <Route path="/Services" element={<Services />}/>
       </Routes>
+      <Footer />
     </div>
     
   );
