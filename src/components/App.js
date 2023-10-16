@@ -7,6 +7,10 @@ import { getAPIHealth } from '../axios-services';
 import '../style/App.css';
 
 import { default as HomePage } from './HomePage'
+import { default as About } from './About'
+import { default as Services } from './Services'
+import { default as Contact } from './Contact'
+import { default as Header } from './Header'
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState('');
@@ -29,9 +33,13 @@ const App = () => {
     <div className="app-container">
       <h1>Hello, World!</h1>
       <p>API Status: {APIHealth}</p>
-
+      
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />}/>
+        <Route path="/About" element={<About />}/>
+        <Route path="/Contact" element={<Contact />}/>
+        <Route path="/Services" element={<Services />}/>
       </Routes>
     </div>
     
