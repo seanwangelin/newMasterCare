@@ -2,10 +2,51 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+}
+
+#navbarContainer {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #4b9560;
+}
+
+#headerText {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-left: -20px;
+    text-decoration: none;
+}
+
+#mcareHeader {
+    font-size: 50px;
+}
+
+#bldgServHeader {
+    font-size: 25px;
 }
 
 .navLink {
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: white;
+    color: #4b9560;
+    height: 40px;
+    width: 140px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+    margin: 0px 0px 8px 0px;
 }
