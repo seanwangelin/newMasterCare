@@ -1,0 +1,51 @@
+img, .imgRight {
+    height: 415px;
+    width: 415px;
+    margin: 15px 15px 15px 0;
+}
+
+.imgRight {
+    margin: 15px 0 15px 15px;
+}
+
+.descriptionContainer, .descriptionContainerRight {
+    padding: 30px;
+}
+
+.descriptionContainer {
+    margin-bottom: 20px;
+}
+
+.innerContainer, .innerContainerRight {
+    display: flex;
+}
+
+.innerContainerRight {
+    flex-direction: row-reverse;
+}
+
+.description, .descriptionRight {
+    padding-top: 45px;
+    font-size: 28px;
+    width: 50%;
+    line-height: 35px;
+}
+
+.descriptionRight {
+    text-align: right;
+}
+
+.descriptionTitle, .descriptionTitleRight {
+    font-size: 40px;
+    position: relative;
+    font-weight: bold;
+}
+
+.descriptionTitle {
+    text-align: center;
+}
+
+.descriptionTitleRight {
+    right: .9%;
+    text-align: right;
+}
