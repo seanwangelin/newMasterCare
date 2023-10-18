@@ -1,6 +1,6 @@
 img, .imgRight {
-    height: 415px;
-    width: 415px;
+    height: 350px;
+    width: 350px;
     margin: 15px 15px 15px 0;
 }
 
@@ -9,7 +9,7 @@ img, .imgRight {
 }
 
 .descriptionContainer, .descriptionContainerRight {
-    padding: 30px;
+    padding: 30px 170px 30px 170px;
 }
 
 .descriptionContainer {
@@ -26,7 +26,7 @@ img, .imgRight {
 
 .description, .descriptionRight {
     padding-top: 45px;
-    font-size: 28px;
+    font-size: 22px;
     width: 50%;
     line-height: 35px;
 }
@@ -36,16 +36,17 @@ img, .imgRight {
 }
 
 .descriptionTitle, .descriptionTitleRight {
-    font-size: 40px;
+    font-size: 30px;
     position: relative;
     font-weight: bold;
 }
 
 .descriptionTitle {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .descriptionTitleRight {
-    right: .9%;
+    right: 2.5%;
     text-align: right;
 }
