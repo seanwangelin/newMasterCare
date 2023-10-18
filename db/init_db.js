@@ -114,7 +114,7 @@ async function populateInitialData() {
       console.log('starting to create descriptions...')
       const descriptionsToCreate = [
         {
-          title: "Our mission statement",
+          title: "Our Mission Statement",
           description: "Our Mission, as your premier provider of condominium management and maintenance services, is to provide individualized attention to the preservation and care of your property as well as implementation of cost effective policies and procedures to ensure the fiscal health of your Association."
         },
         {
