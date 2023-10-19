@@ -10,6 +10,7 @@
     top: 0;
     z-index: 1000;
     background-color: #4b9560;
+    width: 100%;
 }
 
 #headerText {

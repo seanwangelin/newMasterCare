@@ -47,7 +47,15 @@ const App = () => {
             />
           }
         />
-        <Route path="/About" element={<About />} />
+        <Route
+          path="/About"
+          element={
+            <About
+              descriptionsArray={descriptionsArray}
+              setDescriptionsArray={setDescriptionsArray}
+            />
+          }
+        />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Services" element={<Services />} />
       </Routes>
