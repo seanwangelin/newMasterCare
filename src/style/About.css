@@ -1,0 +1,26 @@
+.aboutDescriptionTitle {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.aboutDescription {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+.aboutDescriptionContainer {
+    padding: 30px 400px 0 400px;
+}
+
+.aboutImg {
+    width: 250px;
+    height: 250px;
+}
+
+#aboutImgContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}

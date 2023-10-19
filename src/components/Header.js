@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <>
+      <Navbar />
       <div id="header">
-        <Navbar />
         <div id="subtitle">Condominium Management Professionals</div>
         <div id="subtitle2">since 1986</div>
         <div id="subLinkContainer">
