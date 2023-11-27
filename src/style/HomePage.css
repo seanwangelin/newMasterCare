@@ -9,11 +9,7 @@ img, .imgRight {
 }
 
 .descriptionContainer, .descriptionContainerRight {
-    padding: 30px 170px 30px 170px;
-}
-
-.descriptionContainer {
-    margin-bottom: 20px;
+    padding: 30px 130px 30px 130px;
 }
 
 .innerContainer, .innerContainerRight {
@@ -42,11 +38,10 @@ img, .imgRight {
 }
 
 .descriptionTitle {
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
 }
 
 .descriptionTitleRight {
-    right: 2.5%;
     text-align: right;
 }
