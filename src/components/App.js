@@ -56,7 +56,15 @@ const App = () => {
             />
           }
         />
-        <Route path="/Contact" element={<Contact />} />
+        <Route
+          path="/Contact"
+          element={
+            <Contact
+              managerArray={managerArray}
+              setManagerArray={setManagerArray}
+            />
+          }
+        />
         <Route path="/Services" element={<Services />} />
       </Routes>
       <Footer />

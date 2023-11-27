@@ -1,0 +1,94 @@
+#contactContainer {
+    display: flex;
+    align-items: flex-start;
+    padding: 60px;
+    background-color: #E5EEE4;
+    width: 92%;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+#contactInfoContainer {
+    margin-left: 40px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    font-size: 28px;
+}
+
+#contactMcare {
+    font-size: 48px;
+    font-weight: 550;
+}
+
+.managerCard {
+    border: 3.25px solid #E5EEE4;
+    background-color: #E5EEE4;
+    height: 90px;
+    width: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.managerContactContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4px;
+    background-color: #E5EEE4;;
+}
+
+.managerName {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.nameContainer {
+    margin-bottom: 6px;
+}
+
+.managerTitle {
+    font-size: 10px;
+    text-align: center;
+}
+
+#managerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.emailImage {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+}
+
+.contactInfo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    align-self: flex-end;
+    height: 38px;
+    justify-content: center;
+    place-self: center;
+    background-color: white;
+    border-top: 2px solid #E5EEE4;
+}
+
+#managerHomePage {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+a {
+    text-decoration: underline;
+    color: black
+}

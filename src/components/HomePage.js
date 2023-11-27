@@ -14,6 +14,8 @@ export default function HomePage({
   const [newDescriptionTitle, setNewDescriptionTitle] = useState("");
   const [deletedDescription, setDeletedDescription] = useState("");
   const [deletedDescriptionTitle, setDeletedDescriptionTitle] = useState("");
+  const emailImage = require("../assets/email.png");
+  const phoneImage = require("../assets/calling.png");
 
   const getManagers = async () => {
     let managers = [];
@@ -177,37 +179,43 @@ export default function HomePage({
 
   return (
     <>
-      {descriptionsArray.map((description) => {
-        return description.title === "Welcome to Mastercare Building Services Inc" ? (
-          <>
-            <div key="description.id" className="descriptionContainer">
-              <div className='descriptionTitle'>{description.title}</div>
-              <div className="innerContainer">
-                <img src="https://pixy.org/images/placeholder.png" />
-                
-                  <div className="description">{description.description}</div>
-                
-              </div>
-            </div>
-          </>
-        ) : null;
-      })}
+      <div id="homePageContentContainer">
+        {descriptionsArray.map((description) => {
+          return description.title ===
+            "Welcome to Mastercare Building Services Inc" ? (
+            <>
+              <div key="description.id" className="descriptionContainer">
+                <div className="descriptionTitle">{description.title}</div>
+                <div className="innerContainer">
+                  <img src="https://pixy.org/images/placeholder.png" />
 
-      {descriptionsArray.map((description) => {
-        return description.title === "Our Mission Statement" ? (
-          <>
-            <div key="description.id" className="descriptionContainerRight">
-              <div className='descriptionTitleRight'>{description.title}</div>
-              <div className="innerContainerRight">
-                <img src="https://pixy.org/images/placeholder.png" className="imgRight" />
-                
-                  <div className="descriptionRight">{description.description}</div>
-                
+                  <div className="description">{description.description}</div>
+                </div>
               </div>
-            </div>
-          </>
-        ) : null;
-      })}
+            </>
+          ) : null;
+        })}
+
+        {descriptionsArray.map((description) => {
+          return description.title === "Our Mission Statement" ? (
+            <>
+              <div key="description.id" className="descriptionContainerRight">
+                <div className="descriptionTitleRight">{description.title}</div>
+                <div className="innerContainerRight">
+                  <img
+                    src="https://pixy.org/images/placeholder.png"
+                    className="imgRight"
+                  />
+
+                  <div className="descriptionRight">
+                    {description.description}
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : null;
+        })}
+      </div>
 
       {/* {managerArray.map((manager) => {
         return (

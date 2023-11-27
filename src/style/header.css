@@ -33,6 +33,9 @@
     width: 100vw;
     height: 600px;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #bldgServHeader {
@@ -46,7 +49,7 @@
     font-family: 'Calibri', sans-serif;
     font-weight: bold;
     font-size: 60px;
-    margin-top: 17vh;
+    margin-top: 175px;
 }
 
 #subtitle2 {
