@@ -17,6 +17,7 @@ const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
   const [managerArray, setManagerArray] = useState([]);
   const [descriptionsArray, setDescriptionsArray] = useState([]);
+  const [servicesArray, setServicesArray] = useState([]);
 
   useEffect(() => {
     // follow this pattern inside your useEffect calls:
@@ -65,7 +66,15 @@ const App = () => {
             />
           }
         />
-        <Route path="/Services" element={<Services />} />
+        <Route
+          path="/Services"
+          element={
+            <Services
+              servicesArray={servicesArray}
+              setServicesArray={setServicesArray}
+            />
+          }
+        />
       </Routes>
       <Footer />
     </div>
