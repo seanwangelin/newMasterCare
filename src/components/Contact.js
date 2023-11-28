@@ -53,6 +53,18 @@ export default function Contact({ managerArray, setManagerArray }) {
             <a href="tel:7083582634">708-358-2634</a>
           </div>
       </div>
+      {managerArray.map((manager) => {
+        return (
+          <div id='managerContainer'>
+            <div key={manager.id} className='managerCard'>
+            <div>{manager.name}</div>
+            {manager.title?<div>{manager.title}</div>:null}
+            {manager.phone?<a href={`tel:${manager.phone}`}>{manager.phone}</a>:null}
+            {manager.email?<a href={`mailto:${manager.email}`}>{manager.email}</a>:null}
+          </div>
+          </div>
+        )
+      })}
     </>
   );
 }
