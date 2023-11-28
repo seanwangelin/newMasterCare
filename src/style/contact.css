@@ -4,8 +4,9 @@
     padding: 60px;
     background-color: #E5EEE4;
     width: 92%;
-    margin: 30px;
+    margin: 70px 30px 30px 30px;
     border-radius: 15px;
+    color: rgb(70, 70, 70);;
 }
 
 #contactInfoContainer {
@@ -24,14 +25,15 @@
 }
 
 .managerCard {
-    border: 3.25px solid #E5EEE4;
+    border-radius: 10px;
     background-color: #E5EEE4;
-    height: 90px;
-    width: 225px;
+    height: 190px;
+    width: 265px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-self: center;
+    padding: 0 10px 10px 10px;
 }
 
 .managerContactContainer {
@@ -44,29 +46,35 @@
 .managerName {
     text-align: center;
     padding-top: 5px;
-    font-size: 23px;
+    font-size: 30px;
     font-weight: bold;
+}
+
+.managerTitle {
+    font-size: 14px;
+    text-align: center;
+}
+
+.managerName, .managerTitle {
+    color: rgb(70, 70, 70);
 }
 
 .nameContainer {
     margin-bottom: 6px;
 }
 
-.managerTitle {
-    font-size: 10px;
-    text-align: center;
-}
 
-#managerContainer {
+#managerCardContainer {
     display: flex;
-    flex-direction: column;
     gap: 10px;
+    margin: 50px 0 100px 0;
 }
 
 .emailImage {
     width: 32px;
     height: 32px;
-    margin: 0;
+    margin: 0 5px 0 0;
+
 }
 
 .contactInfo {
@@ -79,6 +87,7 @@
     place-self: center;
     background-color: white;
     border-top: 2px solid #E5EEE4;
+    border-radius: 10px;
 }
 
 #managerHomePage {
@@ -88,7 +97,12 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+#contactMainPhone {
+    font-size: 18px;
+}
+
 a {
     text-decoration: underline;
-    color: black
+    color: black;
+    font-size: 14px;
 }
