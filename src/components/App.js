@@ -28,9 +28,37 @@ const App = () => {
       setAPIHealth(healthy ? "api is up! :D" : "api is down :/");
     };
 
+    const getDescriptions = async () => {
+      let descriptions = [];
+
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/descriptions/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-type": "application/json",
+            },
+          }
+        );
+
+        const result = await response.json();
+        result.map((singleResult) => {
+          descriptions.push(singleResult);
+        });
+
+        setDescriptionsArray(descriptions);
+
+        return result;
+      } catch (err) {
+        throw err;
+      }
+    };
+
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
     getAPIStatus();
+    getDescriptions();
   }, []);
 
   return (
@@ -44,7 +72,6 @@ const App = () => {
               managerArray={managerArray}
               setManagerArray={setManagerArray}
               descriptionsArray={descriptionsArray}
-              setDescriptionsArray={setDescriptionsArray}
             />
           }
         />
@@ -53,7 +80,6 @@ const App = () => {
           element={
             <About
               descriptionsArray={descriptionsArray}
-              setDescriptionsArray={setDescriptionsArray}
             />
           }
         />
@@ -72,6 +98,7 @@ const App = () => {
             <Services
               servicesArray={servicesArray}
               setServicesArray={setServicesArray}
+              descriptionsArray={descriptionsArray}
             />
           }
         />

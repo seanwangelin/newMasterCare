@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
+import "../style/services.css";
 
-export default function Services({ servicesArray, setServicesArray }) {
+export default function Services({
+  servicesArray,
+  setServicesArray,
+  descriptionsArray,
+}) {
   const getServices = async () => {
     let services = [];
 
@@ -26,14 +31,34 @@ export default function Services({ servicesArray, setServicesArray }) {
 
   useEffect(() => {
     getServices();
+    console.log(descriptionsArray);
   }, []);
   console.log("SERVICES: ", servicesArray);
 
   return (
     <>
-      {servicesArray.map((service) => {
-        return <div key={service.id}>{service.service}</div>;
-      })}
+      <div id="approachContainer">
+        {descriptionsArray.map((description) => {
+          return description.title === "Our Approach" ? (
+            <>
+              <div id="approachTitle">{description.title}</div>
+              <div id="approachDesc">{description.description}</div>
+            </>
+          ) : null;
+        })}
+      </div>
+      <div id="servicesTitle">Our list of services</div>
+      <div id="servicesContainer">
+        <div id="servicesCard">
+          {servicesArray.map((service) => {
+            return (
+              <div key={service.id} className="serviceDesc">
+                • {service.service}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 }
