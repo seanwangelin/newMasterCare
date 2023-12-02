@@ -59,3 +59,20 @@
     font-family: 'Calibri', sans-serif;
     font-size: 30px;
 }
+
+#subHeaderContainer {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    z-index: 0;
+    background-color: #4b9560;
+    width: 100%;
+}
+
+.subHeader {
+    color: white;
+    font-weight: bold;
+    font-size: 65px;
+}
