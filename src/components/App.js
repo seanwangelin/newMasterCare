@@ -67,21 +67,11 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={
-            <HomePage
-              managerArray={managerArray}
-              setManagerArray={setManagerArray}
-              descriptionsArray={descriptionsArray}
-            />
-          }
+          element={<HomePage descriptionsArray={descriptionsArray} />}
         />
         <Route
           path="/About"
-          element={
-            <About
-              descriptionsArray={descriptionsArray}
-            />
-          }
+          element={<About descriptionsArray={descriptionsArray} />}
         />
         <Route
           path="/Contact"
