@@ -2,83 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/HomePage.css";
 
-export default function HomePage({
-  managerArray,
-  setManagerArray,
-  descriptionsArray,
-  setDescriptionsArray,
-}) {
+export default function HomePage({ descriptionsArray }) {
   const [deletedService, setDeletedService] = useState("");
   const [newService, setNewService] = useState("");
   const [newDescription, setNewDescription] = useState("");
   const [newDescriptionTitle, setNewDescriptionTitle] = useState("");
   const [deletedDescription, setDeletedDescription] = useState("");
   const [deletedDescriptionTitle, setDeletedDescriptionTitle] = useState("");
-  const emailImage = require("../assets/email.png");
-  const phoneImage = require("../assets/calling.png");
-
-  const getManagers = async () => {
-    let managers = [];
-
-    try {
-      const response = await fetch("http://localhost:4000/api/managers/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const result = await response.json();
-      result.map((singleResult) => {
-        managers.push(singleResult);
-      });
-      // console.log('MANAGERS: ', managers)
-      setManagerArray(managers);
-
-      return result;
-    } catch (err) {
-      throw err;
-    }
-  };
-
-  const getServices = async () => {
-    try {
-      const response = await fetch(`http://localhost:4000/api/services/`, {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-      let result = await response.json();
-      console.log(result);
-      // return result;
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const getDescriptions = async () => {
-    let descriptions = [];
-
-    try {
-      const response = await fetch(`http://localhost:4000/api/descriptions/`, {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-
-      const result = await response.json();
-      result.map((singleResult) => {
-        descriptions.push(singleResult);
-      });
-
-      setDescriptionsArray(descriptions);
-
-      return result;
-    } catch (err) {
-      throw err;
-    }
-  };
 
   const addNewService = async (event) => {
     event.preventDefault();
@@ -168,14 +98,7 @@ export default function HomePage({
     }
   };
 
-  useEffect(() => {
-    getManagers();
-    getServices();
-    getDescriptions();
-  }, []);
-
   console.log("DESCRIPTONS ARRAY: ", descriptionsArray);
-  console.log(managerArray);
 
   return (
     <>

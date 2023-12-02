@@ -1,34 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../style/About.css";
 
-export default function About({ descriptionsArray, setDescriptionsArray }) {
-  const getDescriptions = async () => {
-    let descriptions = [];
-
-    try {
-      const response = await fetch(`http://localhost:4000/api/descriptions/`, {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-        },
-      });
-
-      const result = await response.json();
-      result.map((singleResult) => {
-        descriptions.push(singleResult);
-      });
-
-      setDescriptionsArray(descriptions);
-
-      return result;
-    } catch (err) {
-      throw err;
-    }
-  };
-
-  useEffect(() => {
-    getDescriptions();
-  }, []);
+export default function About({ descriptionsArray }) {
+  
   return (
     <>
       {descriptionsArray.map((description) => {

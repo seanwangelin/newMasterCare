@@ -1,0 +1,53 @@
+#servicesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #E5EEE4;
+    width: 65%;
+    padding:  5px 0 15px 0;
+    line-height: 40px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin: 0 0 40px 0;
+    border: thin solid rgb(70, 70, 70);
+    border-top: none;
+}
+
+.serviceDesc {
+    font-size: 24px;
+    margin: 20px 0;
+    color: rgb(70, 70, 70);
+    margin-left: 50px;
+}
+
+#servicesTitle {
+    font-size: 40px;
+    font-weight: bold;
+    width: 65%;
+    text-align: center;
+    background-color: white;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: thin solid rgb(70, 70, 70);
+    margin-top: 50px;
+}
+
+#approachContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+}
+
+#approachTitle {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0 5px 0;
+}
+
+#approachDesc {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
