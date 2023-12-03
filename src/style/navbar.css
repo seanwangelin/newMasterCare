@@ -3,13 +3,17 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    transition: background-color 0.5s ease;
+}
+
+.scrolled {
+    background-color: #4b9560;
 }
 
 #navbarContainer {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: #4b9560;
     width: 100%;
 }
 
@@ -50,4 +54,10 @@
     cursor: pointer;
     align-self: flex-end;
     margin: 0px 0px 8px 0px;
+}
+
+#mcareHeader,
+#bldgServHeader,
+.navLink {
+    opacity: 1;
 }

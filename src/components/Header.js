@@ -1,10 +1,23 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../style/navbar.css";
+import "../style/header.css";
 
 export default function Navbar() {
   const location = useLocation();
 
+  window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    const threshold = 200;
+    const scrollChangeHeader = document.querySelector('#navbar');
+
+    if (scrollPosition > threshold) {
+      scrollChangeHeader.classList.add('scrolled');
+    } else {
+      scrollChangeHeader.classList.remove('scrolled');
+    }
+  });
+  
   return (
     <>
       <div id="navbarContainer">
@@ -39,7 +52,20 @@ export default function Navbar() {
         </div>
       </div>
       <div id="subHeaderContainer">
-        {location.pathname === "/" ? null : location.pathname === "/About" ? (
+        {location.pathname === "/" ? (
+          <div id="header">
+            <div id="subtitle">Condominium Management Professionals</div>
+            <div id="subtitle2">since 1986</div>
+            <div id="subLinkContainer">
+              <Link to="/Services" className="subLink">
+                Services
+              </Link>
+              <Link to="/About" className="subLink">
+                About us
+              </Link>
+            </div>
+          </div>
+        ) : location.pathname === "/About" ? (
           <div className="subHeader">About Us</div>
         ) : location.pathname === "/Contact" ? (
           <div className="subHeader">Contact Us</div>

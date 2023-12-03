@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { default as HomeHeader } from "./HomeHeader";
 import "../style/HomePage.css";
 
 export default function HomePage({ descriptionsArray }) {
@@ -103,7 +102,7 @@ export default function HomePage({ descriptionsArray }) {
 
   return (
     <>
-      <HomeHeader />
+      {/* <HomeHeader /> */}
       <div id="homePageContentContainer">
         {descriptionsArray.map((description) => {
           return description.title ===

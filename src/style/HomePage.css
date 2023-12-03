@@ -12,6 +12,10 @@ img, .imgRight {
     padding: 30px 130px 30px 130px;
 }
 
+.descriptionContainer {
+    margin-top: 43vw;
+}
+
 .innerContainer, .innerContainerRight {
     display: flex;
 }
