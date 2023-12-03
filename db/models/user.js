@@ -44,8 +44,22 @@ async function createUser({
   }
 }
 
+async function getUserByUsername(username) {
+  try{
+    const { rows } = await client.query(`
+      SELECT * FROM users WHERE username=$1;
+      `, [username]);
+      const [user] = rows;
+
+      return user;
+  } catch (err) {
+    throw err;
+  }
+}
+
 module.exports = {
   // add your database adapter fns here
   getAllUsers,
-  createUser
+  createUser,
+  getUserByUsername
 };

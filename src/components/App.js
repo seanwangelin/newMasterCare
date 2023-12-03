@@ -12,12 +12,14 @@ import { default as Services } from "./Services";
 import { default as Contact } from "./Contact";
 import { default as Header } from "./Header";
 import { default as Footer } from "./Footer";
+import { default as Admin } from "./Admin";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
   const [managerArray, setManagerArray] = useState([]);
   const [descriptionsArray, setDescriptionsArray] = useState([]);
   const [servicesArray, setServicesArray] = useState([]);
+  const [adminLoggedIn, setAdminLoggedIn] = useState(false);
 
   useEffect(() => {
     // follow this pattern inside your useEffect calls:
@@ -55,6 +57,9 @@ const App = () => {
       }
     };
 
+    localStorage.getItem('username') ? setAdminLoggedIn(true) : null;
+    console.log(adminLoggedIn);
+
     // second, after you've defined your getter above
     // invoke it immediately after its declaration, inside the useEffect callback
     getAPIStatus();
@@ -63,7 +68,7 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header adminLoggedIn={adminLoggedIn} setAdminLoggedIn={setAdminLoggedIn} />
       <Routes>
         <Route
           path="/"
@@ -92,7 +97,17 @@ const App = () => {
             />
           }
         />
+        <Route
+          path="/Admin"
+          element={
+            <Admin
+              adminLoggedIn={adminLoggedIn}
+              setAdminLoggedIn={setAdminLoggedIn}
+            />
+          }
+        />
       </Routes>
+
       <Footer />
     </div>
   );
