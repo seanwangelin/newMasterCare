@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/HomePage.css";
 
+const img1 = require("../assets/238Wash.jpg");
+const img2 = require("../assets/gprand.jpg");
+
 export default function HomePage({
   descriptionsArray,
   adminLoggedIn,
@@ -99,7 +102,7 @@ export default function HomePage({
               <div key="description.id" className="descriptionContainer">
                 <div className="descriptionTitle">{description.title}</div>
                 <div className="innerContainer">
-                  <img src="https://pixy.org/images/placeholder.png" />
+                  <img src={img1} />
 
                   <div className="description">
                     {isJson(description.description)}
@@ -138,7 +141,7 @@ export default function HomePage({
                 <div className="descriptionTitleRight">{description.title}</div>
                 <div className="innerContainerRight">
                   <img
-                    src="https://pixy.org/images/placeholder.png"
+                    src={img2}
                     className="imgRight"
                   />
 
