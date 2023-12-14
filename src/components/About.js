@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../style/About.css";
+const humphrey425 = require("../assets/425.jpg");
+const harrison804 = require("../assets/804.jpg");
+const gp1151 = require("../assets/gp1151.jpg");
+const gprand = require("../assets/gprand.jpg");
+const gna = require("../assets/gna.jpg");
+const grove2 = require("../assets/grove2.jpg");
+const park = require("../assets/park.jpg");
+const wesley = require("../assets/wesley.jpg");
+const wesley2 = require("../assets/wesley2.jpg");
 
 export default function About({
   descriptionsArray,
@@ -86,39 +95,39 @@ export default function About({
       })}
       <div id="aboutImgContainer">
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={humphrey425}
           className="aboutImg"
         />
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={harrison804}
           className="aboutImg"
         />
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={gna}
           className="aboutImg"
         />
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={gp1151}
           className="aboutImg"
         />
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={gprand}
           className="aboutImg"
         />
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={grove2}
           className="aboutImg"
         />
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={park}
           className="aboutImg"
         />
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={wesley}
           className="aboutImg"
         />
         <img
-          src="https://pixy.org/images/placeholder.png"
+          src={wesley2}
           className="aboutImg"
         />
       </div>

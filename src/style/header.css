@@ -29,7 +29,10 @@
 }
 
 #header {
-    background-color: #4b9560;
+    background-image: url('/src/assets/grove.jpg');
+    background-size: 100% 100%; /* Stretch the width, maintain aspect ratio for height */
+    background-position: center center;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 100vw;
     padding: 5px;
@@ -68,10 +71,14 @@
     align-items: center;
     position: relative;
     top: 0;
-    margin-top: -4.9vw;
+    margin-top: -6.7vw;
     z-index: 0;
     background-color: #4b9560;
     width: 100%;
+    background-image: url('/src/assets/grove.jpg');
+    background-size: 100% auto; /* Stretch the width, maintain aspect ratio for height */
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .subHeader {

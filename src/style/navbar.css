@@ -4,10 +4,11 @@
     justify-content: space-around;
     align-items: center;
     transition: background-color 0.5s ease;
+    height: 100px;
 }
 
 .scrolled {
-    background-color: #4b9560;
+    background-color: #30603e;
 }
 
 #navbarContainer {
@@ -54,6 +55,7 @@
     cursor: pointer;
     align-self: flex-end;
     margin: 0px 0px 8px 0px;
+    margin-bottom: 2vw;
 }
 
 #mcareHeader,
