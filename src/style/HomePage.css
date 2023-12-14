@@ -49,3 +49,11 @@ img, .imgRight {
 .descriptionTitleRight {
     text-align: right;
 }
+
+form {
+    display: flex;
+}
+
+label {
+    font-size: 1.5vw;
+}

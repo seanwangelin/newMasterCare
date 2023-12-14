@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function Admin({ adminLoggedIn }) {
+export default function Admin({ adminLoggedIn, setAdminLoggedIn }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,6 +21,7 @@ export default function Admin({ adminLoggedIn }) {
       console.log("RESULT:", result);
 
       localStorage.setItem("username", result.user.username);
+      setAdminLoggedIn(true);
 
       return result;
     } catch (err) {

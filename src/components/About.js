@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../style/About.css";
 
-export default function About({ descriptionsArray }) {
-  
+export default function About({
+  descriptionsArray,
+  adminLoggedIn,
+  updateDescription,
+  newDesc,
+  setUpdatedDescription,
+  isJson,
+}) {
   return (
     <>
       {descriptionsArray.map((description) => {
@@ -12,9 +18,30 @@ export default function About({ descriptionsArray }) {
               <div className="aboutDescriptionTitle">{description.title}</div>
               <div className="aboutInnerContainer">
                 <div className="aboutDescription">
-                  {description.description}
+                  {isJson(description.description)}
                 </div>
               </div>
+              {adminLoggedIn ? (
+                  <>
+                    <form
+                      onSubmit={(event) =>
+                        updateDescription(event, description.id)
+                      }
+                    >
+                      <label>update description:</label>
+                      <textarea className='input'
+                        type="text"
+                        value={newDesc}
+                        onChange={(event) =>
+                          setUpdatedDescription(event.target.value)
+                        }
+                      ></textarea>
+                      <button type="submit" name="addDescription">
+                        Add
+                      </button>
+                    </form>
+                  </>
+                ) : null}
             </div>
           </>
         ) : null;
@@ -29,23 +56,71 @@ export default function About({ descriptionsArray }) {
                 {/* <img src="https://pixy.org/images/placeholder.png"/> */}
 
                 <div className="aboutDescription">
-                  {description.description}
+                  {isJson(description.description)}
                 </div>
               </div>
+              {adminLoggedIn ? (
+                <>
+                <form
+                  onSubmit={(event) =>
+                    updateDescription(event, description.id)
+                  }
+                >
+                  <label>update description:</label>
+                  <textarea className='input'
+                    type="text"
+                    value={newDesc}
+                    onChange={(event) =>
+                      setUpdatedDescription(event.target.value)
+                    }
+                  ></textarea>
+                  <button type="submit" name="addDescription">
+                    Add
+                  </button>
+                </form>
+              </>
+              ) : null}
             </div>
           </>
         ) : null;
       })}
       <div id="aboutImgContainer">
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
-        <img src="https://pixy.org/images/placeholder.png" className='aboutImg' />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
+        <img
+          src="https://pixy.org/images/placeholder.png"
+          className="aboutImg"
+        />
       </div>
     </>
   );

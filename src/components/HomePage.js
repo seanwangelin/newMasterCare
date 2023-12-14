@@ -2,37 +2,22 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../style/HomePage.css";
 
-export default function HomePage({ descriptionsArray }) {
+export default function HomePage({
+  descriptionsArray,
+  adminLoggedIn,
+  updateDescription,
+  newDesc,
+  setUpdatedDescription,
+  isJson,
+}) {
   const [deletedService, setDeletedService] = useState("");
   const [newService, setNewService] = useState("");
-  const [newDescription, setNewDescription] = useState("");
   const [newDescriptionTitle, setNewDescriptionTitle] = useState("");
   const [deletedDescription, setDeletedDescription] = useState("");
   const [deletedDescriptionTitle, setDeletedDescriptionTitle] = useState("");
 
-  const addNewService = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(
-        `http://localhost:4000/api/services/newService`,
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            service: newService,
-          }),
-        }
-      );
+  let parsedDescription;
 
-      const result = await response.json();
-
-      return result;
-    } catch (err) {
-      throw err;
-    }
-  };
   const addNewDescription = async (event) => {
     event.preventDefault();
     try {
@@ -58,26 +43,6 @@ export default function HomePage({ descriptionsArray }) {
     }
   };
 
-  const deleteService = async (event, serviceID) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(
-        `http://localhost:4000/api/services/delete/${serviceID}`,
-        {
-          method: "Delete",
-          headers: {
-            "Content-type": "application/json",
-          },
-        }
-      );
-      let result = await response.json();
-      console.log(result);
-      // return result;
-    } catch (err) {
-      throw err;
-    }
-  };
-
   const deleteDescription = async (event, descriptionID) => {
     event.preventDefault();
     try {
@@ -98,6 +63,29 @@ export default function HomePage({ descriptionsArray }) {
     }
   };
 
+  const updateDescriptionTitle = async (event, id) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/descriptions/updateDescriptionTitle/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            newDescTitle: newDescriptionTitle,
+          }),
+        }
+      );
+      const result = await response.json();
+      console.log("TITLE RESULT: ", result);
+      return result;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   console.log("DESCRIPTONS ARRAY: ", descriptionsArray);
 
   return (
@@ -113,8 +101,31 @@ export default function HomePage({ descriptionsArray }) {
                 <div className="innerContainer">
                   <img src="https://pixy.org/images/placeholder.png" />
 
-                  <div className="description">{description.description}</div>
+                  <div className="description">
+                    {isJson(description.description)}
+                  </div>
                 </div>
+                {adminLoggedIn ? (
+                  <>
+                    <form
+                      onSubmit={(event) =>
+                        updateDescription(event, description.id)
+                      }
+                    >
+                      <label>update description:</label>
+                      <textarea className="input"
+                        type="text"
+                        value={newDesc}
+                        onChange={(event) =>
+                          setUpdatedDescription(event.target.value)
+                        }
+                      ></textarea>
+                      <button type="submit" name="addDescription">
+                        Add
+                      </button>
+                    </form>
+                  </>
+                ) : null}
               </div>
             </>
           ) : null;
@@ -132,9 +143,28 @@ export default function HomePage({ descriptionsArray }) {
                   />
 
                   <div className="descriptionRight">
-                    {description.description}
+                    {isJson(description.description)}
                   </div>
                 </div>
+                {adminLoggedIn ? (
+                  <form
+                    onSubmit={(event) =>
+                      updateDescription(event, description.id)
+                    }
+                  >
+                    <label>update description:</label>
+                    <textarea className="input"
+                      type="text"
+                      value={newDesc}
+                      onChange={(event) =>
+                        setUpdatedDescription(event.target.value)
+                      }
+                    ></textarea>
+                    <button type="submit" name="addDescription">
+                      Add
+                    </button>
+                  </form>
+                ) : null}
               </div>
             </>
           ) : null;
@@ -163,11 +193,6 @@ export default function HomePage({ descriptionsArray }) {
         <button type="submit" name="deleteService">Delete</button>
       </form>
 
-      <form onSubmit={(event) => addNewService(event)}>
-        <label>Add service:</label>
-        <input type="text" value={newService} onChange={(event) => setNewService(event.target.value)}></input>
-        <button type="submit" name="addService">Add</button>
-      </form>
 
       <form onSubmit={(event) => deleteDescription(event, deletedDescription)}>
         <label>Delete description:</label>

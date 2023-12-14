@@ -51,3 +51,11 @@
     font-size: 22px;
     margin-bottom: 30px;
 }
+
+form {
+    display: flex;
+}
+
+label {
+    font-size: 1.5vw;
+}
