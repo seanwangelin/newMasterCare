@@ -3,7 +3,17 @@ import "../style/contact.css";
 const emailImage = require("../assets/email.png");
 const phoneImage = require("../assets/calling.png");
 
-export default function Contact({ managerArray, setManagerArray }) {
+export default function Contact({
+  managerArray,
+  setManagerArray,
+  adminLoggedIn,
+  isJson,
+}) {
+  const [managerName, setManagerName] = useState("");
+  const [managerPhone, setManagerPhone] = useState("");
+  const [managerEmail, setManagerEmail] = useState("");
+  const [managerTitle, setManagerTitle] = useState("");
+
   const getManagers = async () => {
     let managers = [];
 
@@ -24,6 +34,97 @@ export default function Contact({ managerArray, setManagerArray }) {
       return result;
     } catch (err) {
       throw err;
+    }
+  };
+
+  const createManager = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(
+        "http://localhost:4000/api/managers/newManager/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: managerName,
+            title: managerTitle,
+            phone: managerPhone,
+            email: managerEmail,
+          }),
+        }
+      );
+      const result = await response.json();
+
+      console.log("NEW MANAGER RESULT: ", result);
+
+      return result;
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  const deleteManager = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/managers/delete/${id}`,
+        {
+          method: "delete",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const result = await response.json();
+      console.log("delete result: ", result);
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  const updateManagerName = async (event, id) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/managers/updateManagerName/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            newName: managerName,
+          }),
+        }
+      );
+      const result = await response.json();
+      return result;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const updateManagerTitle = async (event, id) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/managers/updateManagerTitle/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            newTitle: managerTitle,
+          }),
+        }
+      );
+      const result = await response.json();
+      return result;
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -50,37 +151,90 @@ export default function Contact({ managerArray, setManagerArray }) {
             <div>41 Chicago Ave.</div>
             <div>Oak Park, IL 60302</div>
           </div>
-          <a href="tel:7083582634" id='contactMainPhone'>708-358-2634</a>
+          <a href="tel:7083582634" id="contactMainPhone">
+            708-358-2634
+          </a>
         </div>
       </div>
       <div id="managerCardContainer">
         {managerArray.map((manager) => {
           return (
-            <div key={manager.id} className="managerCard">
-              <div>
-                <div className="managerName">{manager.name}</div>
-                {manager.title ? (
-                  <div className="managerTitle">{manager.title}</div>
+            <>
+              <div key={manager.id} className="managerCard">
+                <div>
+                  <div className="managerName">{manager.name}</div>
+
+                  {manager.title ? (
+                    <div className="managerTitle">{manager.title}</div>
+                  ) : null}
+                </div>
+                <div className="contactInfoContainer">
+                  {manager.phone ? (
+                    <div className="contactInfo">
+                      <img src={phoneImage} className="emailImage" />
+                      <a href={`tel:${manager.phone}`}>{manager.phone}</a>
+                    </div>
+                  ) : null}
+                  {manager.email ? (
+                    <div className="contactInfo">
+                      <img src={emailImage} className="emailImage" />
+                      <a href={`mailto:${manager.email}`}>{manager.email}</a>
+                    </div>
+                  ) : null}
+                </div>
+                {adminLoggedIn ? (
+                  <button onClick={() => deleteManager(manager.id)}>
+                    delete
+                  </button>
                 ) : null}
               </div>
-              <div className="contactInfoContainer">
-                {manager.phone ? (
-                  <div className="contactInfo">
-                    <img src={phoneImage} className="emailImage" />
-                    <a href={`tel:${manager.phone}`}>{manager.phone}</a>
-                  </div>
-                ) : null}
-                {manager.email ? (
-                  <div className="contactInfo">
-                    <img src={emailImage} className="emailImage" />
-                    <a href={`mailto:${manager.email}`}>{manager.email}</a>
-                  </div>
-                ) : null}
-              </div>
-            </div>
+            </>
           );
         })}
       </div>
+      {adminLoggedIn ? (
+        <div id="addMgrContainer">
+          <form id="addMgrForm" onSubmit={(event) => createManager(event)}>
+            <div id="formInputContainer">
+              <label>Add manager name:</label>
+              <input
+                type="text"
+                value={managerName}
+                onChange={(event) => setManagerName(event.target.value)}
+              ></input>
+            </div>
+            <div id="formInputContainer">
+              <label>Add manager phone:</label>
+              <input
+                type="text"
+                value={managerPhone}
+                onChange={(event) => setManagerPhone(event.target.value)}
+              ></input>
+            </div>
+            <div id="formInputContainer">
+              <label>Add manager email:</label>
+              <input
+                type="text"
+                value={managerEmail}
+                onChange={(event) => setManagerEmail(event.target.value)}
+              ></input>
+            </div>
+
+            <div id="formInputContainer">
+              <label>Add manager title:</label>
+              <input
+                type="text"
+                value={managerTitle}
+                onChange={(event) => setManagerTitle(event.target.value)}
+              ></input>
+            </div>
+
+            <button id='addMgrButton' type="submit" name="createManager">
+              Add
+            </button>
+          </form>
+        </div>
+      ) : null}
     </>
   );
 }

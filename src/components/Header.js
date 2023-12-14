@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../style/navbar.css";
 import "../style/header.css";
 
-export default function Navbar() {
+export default function Navbar({ adminLoggedIn }) {
   const location = useLocation();
+  const logout = (event) => {
+    event.preventDefault();
+    localStorage.removeItem("username");
+    window.location.reload();
+  };
 
-  window.addEventListener('scroll', () => {
+  window.addEventListener("scroll", () => {
     const scrollPosition = window.scrollY;
     const threshold = 200;
-    const scrollChangeHeader = document.querySelector('#navbar');
+    const scrollChangeHeader = document.querySelector("#navbar");
 
     if (scrollPosition > threshold) {
-      scrollChangeHeader.classList.add('scrolled');
+      scrollChangeHeader.classList.add("scrolled");
     } else {
-      scrollChangeHeader.classList.remove('scrolled');
+      scrollChangeHeader.classList.remove("scrolled");
     }
   });
-  
+
+  useEffect(() => {
+    console.log(adminLoggedIn);
+  });
+
   return (
     <>
       <div id="navbarContainer">
@@ -49,6 +58,11 @@ export default function Navbar() {
           >
             Condo Owner Login
           </a>
+          {adminLoggedIn === true ? (
+            <a className="navLink" onClick={(event) => logout(event)}>
+              log out
+            </a>
+          ) : null}
         </div>
       </div>
       <div id="subHeaderContainer">

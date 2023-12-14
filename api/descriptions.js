@@ -5,6 +5,8 @@ const {
   getAllDescriptions,
   deleteDescription,
   createDescription,
+  updateDescription,
+  updateDescriptionTitle,
 } = require("../db/models/descriptions");
 
 descriptionsRouter.get("/", async (req, res, next) => {
@@ -29,6 +31,44 @@ descriptionsRouter.post("/newDescription", async (req, res, next) => {
     throw err;
   }
 });
+
+descriptionsRouter.put(
+  "/updateDescription/:descriptionID",
+  async (req, res) => {
+    const { descriptionID } = req.params;
+    const newDesc = req.body;
+
+    try {
+      const updatedDescription = await updateDescription(
+        descriptionID,
+        newDesc
+      );
+      res.send(updatedDescription);
+      console.log("description updated!");
+    } catch (err) {
+      throw err;
+    }
+  }
+);
+
+descriptionsRouter.put(
+  "/updateDescriptionTitle/:descriptionID",
+  async (req, res) => {
+    const { descriptionID } = req.params;
+    const newDescTitle = req.body;
+
+    try {
+      const updatedDescriptionTitle = await updateDescriptionTitle(
+        descriptionID,
+        newDescTitle
+      );
+      res.send(updatedDescriptionTitle);
+      console.log("description updated!");
+    } catch (err) {
+      throw err;
+    }
+  }
+);
 
 descriptionsRouter.delete("/delete/:descriptionID", async (req, res, next) => {
   const { descriptionID } = req.params;

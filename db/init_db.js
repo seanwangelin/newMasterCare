@@ -3,7 +3,7 @@ const {
   User,
   PropMgrs,
   Descriptions,
-  Services
+  Services,
   // declare your model imports here
   // for example, User
 } = require("./");
@@ -28,10 +28,10 @@ async function buildTables() {
 
       CREATE TABLE propMgrs (
         id SERIAL PRIMARY KEY,
-        name varchar(255) NOT NULL,
-        title varchar(255),
-        phone varchar(255) NOT NULL,
-        email varchar(255)NOT NULL
+        name text NOT NULL,
+        title text,
+        phone text NOT NULL,
+        email text
       );
 
       CREATE TABLE descriptions (
@@ -79,28 +79,28 @@ async function populateInitialData() {
         {
           name: "Patty Elmore",
           phone: 7088763208,
-          email: 'patty@mcareservices.com'
+          email: "patty@mcareservices.com"
         },
         {
           name: "Bill Planek",
           phone: 7083582634,
-          email: 'bill@mcareservices.com'
+          email: "bill@mcareservices.com"
         },
         {
           name: "Barry Dodero",
           phone: 7086229248,
-          email: 'barry@mcareservices.com'
+          email: "barry@mcareservices.com"
         },
         {
           name: "Mike Vitek",
           phone: 7084068650,
-          email: 'mikevitek@mcareservices.com'
+          email: "mikevitek@mcareservices.com"
         },
         {
           name: "Ryan Reid",
           title: "Administrative Assistant",
           phone: 7086229245,
-          email: 'ryan@mcareservices.com'
+          email: "ryan@mcareservices.com"
         },
       ];
       const propMgrs = await Promise.all(
@@ -111,57 +111,74 @@ async function populateInitialData() {
     };
 
     const createInitialDescriptions = async () => {
-      console.log('starting to create descriptions...')
+      console.log("starting to create descriptions...");
       const descriptionsToCreate = [
         {
           title: "Our Mission Statement",
-          description: "Our Mission, as your premier provider of condominium management and maintenance services, is to provide individualized attention to the preservation and care of your property as well as implementation of cost effective policies and procedures to ensure the fiscal health of your Association."
+          description:
+            "Our Mission, as your premier provider of condominium management and maintenance services, is to provide individualized attention to the preservation and care of your property as well as implementation of cost effective policies and procedures to ensure the fiscal health of your Association.",
         },
         {
           title: "Welcome to Mastercare Building Services Inc",
-          description: "Mastercare is a full service property management company serving the Oak Park, River Forest and Forest Park communities. With over 32 years of experience in condominium management, Mastercare's dedicated service and individualized attention is the best choice for all of your property management needs."
+          description:
+            "Mastercare is a full service property management company serving the Oak Park, River Forest and Forest Park communities. With over 32 years of experience in condominium management, Mastercare's dedicated service and individualized attention is the best choice for all of your property management needs.",
         },
         {
           title: "Our Approach",
-          description: "The Mastercare philosophy is to operate each property from the owners perspective, with a vital awareness of the goals and requests of board members and residents. Mastercare is a full service building management company committed to providing professional, cost effective and efficient property management services. We have an in-depth personal understanding of the needs of our clients property because we are property owners ourselves."
+          description:
+            "The Mastercare philosophy is to operate each property from the owners perspective, with a vital awareness of the goals and requests of board members and residents. Mastercare is a full service building management company committed to providing professional, cost effective and efficient property management services. We have an in-depth personal understanding of the needs of our clients property because we are property owners ourselves.",
         },
         {
           title: "Our Experience",
-          description: "Founded in 1986, Mastercare has over 28 years of property management experience. Our team of professionals are highly qualified and offer a broad range of experience, techical expertise and strong customer service. The team includes skilled account managers, attentive building engineers, reliable maintenance personnel, and dedicated property supervisors whose track-record and understanding of the business are critical to the success of your association."
+          description:
+            "Founded in 1986, Mastercare has over 28 years of property management experience. Our team of professionals are highly qualified and offer a broad range of experience, techical expertise and strong customer service. The team includes skilled account managers, attentive building engineers, reliable maintenance personnel, and dedicated property supervisors whose track-record and understanding of the business are critical to the success of your association.",
         },
         {
           title: "Community Involvement",
-          description: "Mastercare is commited to the local communities we serve. We believe that giving back is an important part of our company culture. Whether we sponsor local youth baseball, volunteer baking cookies in a solar oven at A Day in Our Village, try our hand at making Farmer's Market donuts, hit the links for a local charity or donate to one of the multiple worthy community organizations, we know that involvement and support is what helps communities thrive."
-        }
-      ]
+          description:
+            "Mastercare is commited to the local communities we serve. We believe that giving back is an important part of our company culture. Whether we sponsor local youth baseball, volunteer baking cookies in a solar oven at A Day in Our Village, try our hand at making Farmer's Market donuts, hit the links for a local charity or donate to one of the multiple worthy community organizations, we know that involvement and support is what helps communities thrive.",
+        },
+      ];
       const descriptions = await Promise.all(
         descriptionsToCreate.map(Descriptions.createDescription)
       );
-      console.log("descriptions created: ", descriptions)
-      console.log('finsished creating descriptions')
-    }
+      console.log("descriptions created: ", descriptions);
+      console.log("finsished creating descriptions");
+    };
 
     const createInitialServices = async () => {
-      console.log('starting to create services...');
+      console.log("starting to create services...");
       const servicesToCreate = [
-        {service: "Develop yearly budget based upon historical costs and anticipated changes"},
-        {service: "Provide monthly operating statements with budget comparison"},
-        {service: "Process resident assessments"},
-        {service: "Collect delinquent accounts"},
-        {service: "Administer accounts payable"},
-        {service: "Provide 24/7 emergency answering service"},
-        {service: "Coordinate building maintenance and repairs"},
-        {service: "Review ongoing repair and replacement needs"},
-        {service: "Provide a reference library for topics relating to Community/Condominium Associations"},
-        {service: "Create managed websites for individual Associations"},
-        {service: "Customize services for Associations with unique needs, like in-house janitorial services"},
-      ]
+        {
+          service:
+            "Develop yearly budget based upon historical costs and anticipated changes",
+        },
+        {
+          service:
+            "Provide monthly operating statements with budget comparison",
+        },
+        { service: "Process resident assessments" },
+        { service: "Collect delinquent accounts" },
+        { service: "Administer accounts payable" },
+        { service: "Provide 24/7 emergency answering service" },
+        { service: "Coordinate building maintenance and repairs" },
+        { service: "Review ongoing repair and replacement needs" },
+        {
+          service:
+            "Provide a reference library for topics relating to Community/Condominium Associations",
+        },
+        { service: "Create managed websites for individual Associations" },
+        {
+          service:
+            "Customize services for Associations with unique needs, like in-house janitorial services",
+        },
+      ];
       const services = await Promise.all(
         servicesToCreate.map(Services.createService)
-      )
+      );
       console.log("services created: ", services);
       console.log("finished creating services");
-    }
+    };
 
     await createInitialUsers();
     await createInitialPropMgrs();

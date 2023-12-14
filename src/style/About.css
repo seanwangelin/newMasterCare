@@ -24,3 +24,18 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
 }
+
+.input {
+    height: 5vw;
+    width: 20vw;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+form {
+    display: flex;
+}
+
+label {
+    font-size: 1.5vw;
+}
