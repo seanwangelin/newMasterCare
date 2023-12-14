@@ -2,15 +2,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    color: rgba(48, 96, 62, 1);
     background-color: white;
-    color: #4b9560;
-    height: 40px;
+    height: 4vw;
     width: 150px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
+    font-size: 1.5vw;
     font-weight: bold;
     text-align: center;
     text-decoration: none;

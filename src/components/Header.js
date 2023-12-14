@@ -13,7 +13,7 @@ export default function Navbar({ adminLoggedIn }) {
 
   window.addEventListener("scroll", () => {
     const scrollPosition = window.scrollY;
-    const threshold = 200;
+    const threshold = 100;
     const scrollChangeHeader = document.querySelector("#navbar");
 
     if (scrollPosition > threshold) {
@@ -35,15 +35,14 @@ export default function Navbar({ adminLoggedIn }) {
             <div id="mcareHeader">Mastercare</div>
             <div id="bldgServHeader">Building Services</div>
           </Link>
-          <a href="mailto:bill@mcareservices.com" className="navLink">
-            Free Evaluation
-          </a>
-          <a href="https://www.homewisedocs.com/" className="navLink">
-            Request Sales/Finance Docs
-          </a>
+
           <Link to="/Contact" className="navLink">
             Contact
           </Link>
+
+          <a href="https://www.homewisedocs.com/" className="navLink">
+            Request Sales/Finance Docs
+          </a>
 
           <Link to="/Services" className="navLink">
             Services
@@ -52,9 +51,12 @@ export default function Navbar({ adminLoggedIn }) {
           <Link to="/About" className="navLink">
             About us
           </Link>
+          <a href="mailto:bill@mcareservices.com" className="navLinkBold">
+            Free Evaluation
+          </a>
           <a
             href="https://oakparkapartments.securecafe.com/residentservices/mastercare-building-services-inc/userlogin.aspx"
-            className="navLink"
+            className="navLinkBold"
           >
             Condo Owner Login
           </a>
