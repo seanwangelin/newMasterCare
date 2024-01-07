@@ -57,3 +57,34 @@ form {
 label {
     font-size: 1.5vw;
 }
+
+@media only screen and (max-width: 575.98px) {
+    .descriptionContainer, .descriptionContainerRight {
+        width: 100vw;
+        padding: 1vw;
+    }
+
+    img, .imgRight {
+        height: 40vw;
+        width: 40vw;
+        margin-top: 1vw;
+    }
+
+    .descriptionContainer {
+        margin: 25vw 0 0 3vw;
+    }
+
+    .descriptionTitle, .descriptionTitleRight {
+        font-size: 4vw;
+    }
+
+    .descriptionTitle {
+        margin-bottom: 0;
+    }
+
+    .description, .descriptionRight {
+        font-size: 4vw;
+        line-height: 3.75vw;
+        padding-top: 1vw;
+    }
+}

@@ -23,6 +23,14 @@ export default function Navbar({ adminLoggedIn }) {
     }
   });
 
+  function toggleMenu() {
+    var navLinkContainer = document.getElementById("navLinkContainer");
+    console.log('navLinkContainer is registering ', navLinkContainer)
+    if (navLinkContainer) {
+      navLinkContainer.classList.toggle("show");
+    }
+  }
+
   useEffect(() => {
     console.log(adminLoggedIn);
   });
@@ -35,31 +43,37 @@ export default function Navbar({ adminLoggedIn }) {
             <div id="mcareHeader">Mastercare</div>
             <div id="bldgServHeader">Building Services</div>
           </Link>
+          <div className="hamburger-icon" onClick={toggleMenu}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div id="navLinkContainer">
+              <Link to="/Contact" className="navLink">
+                Contact
+              </Link>
 
-          <Link to="/Contact" className="navLink">
-            Contact
-          </Link>
+              <a href="https://www.homewisedocs.com/" className="navLink">
+                Request Sales/Finance Docs
+              </a>
 
-          <a href="https://www.homewisedocs.com/" className="navLink">
-            Request Sales/Finance Docs
-          </a>
+              <Link to="/Services" className="navLink">
+                Services
+              </Link>
 
-          <Link to="/Services" className="navLink">
-            Services
-          </Link>
-
-          <Link to="/About" className="navLink">
-            About us
-          </Link>
-          <a href="mailto:bill@mcareservices.com" className="navLinkBold">
-            Free Evaluation
-          </a>
-          <a
-            href="https://oakparkapartments.securecafe.com/residentservices/mastercare-building-services-inc/userlogin.aspx"
-            className="navLinkBold"
-          >
-            Condo Owner Login
-          </a>
+              <Link to="/About" className="navLink">
+                About us
+              </Link>
+              <a href="mailto:bill@mcareservices.com" className="navLinkBold">
+                Free Evaluation
+              </a>
+              <a
+                href="https://oakparkapartments.securecafe.com/residentservices/mastercare-building-services-inc/userlogin.aspx"
+                className="navLinkBold"
+              >
+                Condo Owner Login
+              </a>
+            </div>
+          </div>
           {adminLoggedIn === true ? (
             <a className="navLink" onClick={(event) => logout(event)}>
               log out

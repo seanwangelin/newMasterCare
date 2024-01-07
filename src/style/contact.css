@@ -138,3 +138,59 @@ a {
     color: black;
     font-size: 14px;
 }
+
+@media only screen and (max-width: 575.98px) { 
+    #contactMcare {
+        font-size: 2vw;
+    }
+
+    .addressLine {
+        font-size: 7vw;
+    }
+
+    .addressLine2 {
+        font-size: 6vw;
+    }
+
+    #contactContainer {
+        flex-direction: column;
+        padding: 5vw;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8vw;
+    }
+
+    #contactInfoContainer {
+        margin-top: 2vw;
+        gap: 3vw;
+        margin-left: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #addressContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #contactMainPhone {
+        text-align: center;
+    }
+
+    #managerCardContainer {
+        margin-top: 0;
+    }
+
+    .managerCard {
+        height: 32vw;
+    }
+
+    .managerName {
+        font-size: 6vw;
+    }
+
+    .managerTitle {
+        font-size: 3vw;
+    }
+}

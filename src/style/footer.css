@@ -58,3 +58,27 @@
 #address {
     font-size: 15px;
 }
+
+@media only screen and (max-width: 575.98px) {
+
+    #mcare {
+        font-size: 8vw;
+    }
+
+    #bldgServ {
+        font-size: 4vw;
+    }
+
+    #address {
+        font-size: 2vw;
+    }
+
+    #phone {
+        font-size: 3vw;
+        height: 8vw;
+    }
+
+    #footer-container {
+        padding: 0 2vw 2vw 2vw;
+    }
+}
