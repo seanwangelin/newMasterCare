@@ -77,6 +77,10 @@
     width: 12vw;
 }
 
+.navLink:hover {
+    background-color: rgba(48, 96, 62, 1);
+}
+
 .hamburger-icon {
     display: flex;
     justify-content: center;

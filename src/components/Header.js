@@ -52,7 +52,7 @@ export default function Navbar({ adminLoggedIn }) {
                 Contact
               </Link>
 
-              <a href="https://www.homewisedocs.com/" className="navLink">
+              <a href="https://www.homewisedocs.com/" className="navLink" target="_blank">
                 Request Sales/Finance Docs
               </a>
 
@@ -68,7 +68,7 @@ export default function Navbar({ adminLoggedIn }) {
               </a>
               <a
                 href="https://oakparkapartments.securecafe.com/residentservices/mastercare-building-services-inc/userlogin.aspx"
-                className="navLinkBold"
+                className="navLinkBold" target="_blank"
               >
                 Condo Owner Login
               </a>
