@@ -4,6 +4,7 @@ import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 // you can think of that directory as a collection of api adapters
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
+import Favicon from "react-favicon";
 import "../style/App.css";
 
 import { default as HomePage } from "./HomePage";
@@ -105,6 +106,7 @@ const App = () => {
 
   return (
     <div className="app-container">
+      <Favicon url="https://imgur.com/a/BS9d557"></Favicon>
       <Header
         adminLoggedIn={adminLoggedIn}
         setAdminLoggedIn={setAdminLoggedIn}

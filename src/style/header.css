@@ -107,11 +107,7 @@
     #header {
         top: 0;
         margin-top: -20vw;
-    }
-
-    #headerText {
-        display: flex;
-        flex-direction: column;
+        width: 100%;
     }
 
     #navbarContainer {
@@ -133,6 +129,28 @@
     }
 
     #subtitle {
-        font-size: 4vw;
+        font-size: 6vw;
+        margin-top: 50vw;
+    }
+
+    #subtitle2 {
+        font-size: 4.5vw;
+    }
+
+    .subLink {
+        height: 7vw;
+        font-size: 3.15vw;
+    }
+
+    #subLinkContainer {
+        margin-top: 8vw;
+    }
+
+    #subHeaderContainer {
+        height: 35vw;
+    }
+
+    .subHeader {
+        font-size: 10vw;
     }
 }

@@ -3,8 +3,8 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    background-color: #4b9560;
-    height: 10vh;
+    background-color: rgba(48, 96, 62, 1);
+    height: 9vh;
     color: white;
     align-items: flex-end;
     gap: 50px;
@@ -37,9 +37,9 @@
 
 #phone {
     background-color: white;
-    color: #4b9560;
+    color: rgba(48, 96, 62, 1);
     height: 33px;
-    width: 60%;
+    width: 75%;
     text-align: center;
     display: flex;
     align-items: center;
@@ -57,4 +57,42 @@
 
 #address {
     font-size: 15px;
+}
+
+#phoneImg {
+    width: 1.75vw;
+    height: 1.75vw;
+    margin: 0 .5vw 0 0;
+}
+
+@media only screen and (max-width: 575.98px) {
+
+    #mcare {
+        font-size: 8vw;
+    }
+
+    #bldgServ {
+        font-size: 4vw;
+    }
+
+    #address {
+        font-size: 2vw;
+    }
+
+    #phone {
+        font-size: 3vw;
+        height: 6.5vw;
+        width: 85%;
+    }
+
+    #footer-container {
+        padding: 0 2vw 2vw 2vw;
+        height: 13vw;
+    }
+
+    #phoneImg {
+        width: 5.5vw;
+        height: 5.5vw;
+        margin: 0 1vw 0 0;
+    }
 }

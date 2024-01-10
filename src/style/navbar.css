@@ -1,10 +1,18 @@
 #navbar {
+    transition: background-color 0.5s ease;
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+#navLinkContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    transition: background-color 0.5s ease;
-    height: 100px;
+    justify-content: space-around;
+    width: 75%;
 }
 
 .scrolled {
@@ -22,7 +30,7 @@
     color: white;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    margin-left: -20px;
+    margin: .5vw 0 0 1vw;
     text-decoration: none;
 }
 
@@ -34,11 +42,13 @@
     font-size: 25px;
 }
 
-#mcareHeader, #bldgServHeader {
+#mcareHeader,
+#bldgServHeader {
     padding-left: .5vw;
 }
 
-.navLink, .navLinkBold {
+.navLink,
+.navLinkBold {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,13 +68,24 @@
     border-radius: 5px;
     cursor: pointer;
     align-self: flex-end;
-    margin: 0px 0px 8px 0px;
+    margin: 0 1.5vw 8px 0;
     margin-bottom: 1.5vw;
 }
 
 .navLinkBold {
     background-color: rgba(48, 96, 62, 1);
     width: 12vw;
+}
+
+.navLink:hover {
+    background-color: rgba(48, 96, 62, 1);
+}
+
+.hamburger-icon {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+    width: 100%;
 }
 
 #mcareHeader,
@@ -78,7 +99,6 @@
         height: 10vw;
         background-color: rgba(48, 96, 62, 1);
         transition: none;
-
     }
 
     .navLinkBold {
@@ -86,7 +106,49 @@
         width: 20vw;
     }
 
-    .navLink, .navLinkBold {
+    .navLink,
+    .navLinkBold {
         margin-bottom: 3vw;
+        width: 8vw;
+    }
+
+    #navLinkContainer {
+        display: none;
+    }
+    
+    #navLinkContainer.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8vw;
+        background-color: rgba(48, 96, 62, 1);
+        width: 110%;
+        height: 69.5vw;
+        padding-top: 1vw;
+    }
+    
+    .navLink, .navLinkBold {
+        margin: 0 auto;
+        font-size: 4vw;
+        border-bottom: thin solid white;
+        width: 75%;
+        border-radius: 0;
+        padding-bottom: 4vw;
+    }
+
+    .hamburger-icon {
+        display: block;
+        cursor: pointer;
+        padding: .75vw 3vw 0 0;
+    }
+
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 6px 0;
+        transition: 0.4s;
+        margin-left: auto;
     }
 }

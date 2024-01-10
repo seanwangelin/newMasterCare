@@ -59,3 +59,32 @@ form {
 label {
     font-size: 1.5vw;
 }
+
+@media only screen and (max-width: 575.98px) {
+    #approachDesc {
+        font-size: 3.5vw;
+    }
+
+    #approachTitle {
+        font-size: 6vw;
+        margin-top: 2vw;
+    }
+
+    #servicesTitle {
+        font-size: 5vw;
+        width: 80%;
+        margin-top: 1vw;
+    }
+
+    .serviceDesc {
+        font-size: 3.5vw;
+        margin: 3vw 0 0 1vw;
+        line-height: 6vw;
+    }
+
+    #servicesContainer {
+        width: 80%;
+        padding: 2vw;
+    }
+
+}

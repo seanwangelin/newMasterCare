@@ -39,3 +39,30 @@ form {
 label {
     font-size: 1.5vw;
 }
+
+@media only screen and (max-width: 575.98px) { 
+    .aboutDescriptionTitle {
+        font-size: 5vw;
+        margin: 2vw 0 0 0;
+    }
+
+    .aboutDescription {
+        font-size: 3.5vw;
+        margin-bottom: 1vw;
+    }
+
+    .aboutDescriptionContainer {
+        padding: 0 12vw;
+    }
+
+    .aboutImg {
+        height: 23vw;
+        width: 23vw;
+        margin: 1vw;
+    }
+
+    #aboutImgContainer {
+        grid-gap: .75vw;
+        margin-top: 3vw;
+    }
+}
