@@ -11,7 +11,8 @@
     "db:build": "node ./db/init_db",
     "start:dev": "concurrently \"npm run client:build\" \"npm run client:dev\" \"npm run server:dev\"",
     "start": "node index.js",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "deploy": "react-scripts build && aws s3 rm s3://mcaretestbucket/ --recursive && aws s3 cp ./build s3://mcaretestbucket/ --recursive --acl public-read"
   },
   "keywords": [],
   "author": "",

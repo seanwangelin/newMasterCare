@@ -24,15 +24,13 @@ export default function Navbar({ adminLoggedIn }) {
   });
 
   function toggleMenu() {
-    var navLinkContainer = document.getElementById("navLinkContainer");
-    console.log('navLinkContainer is registering ', navLinkContainer)
+    const navLinkContainer = document.getElementById("navLinkContainer");
     if (navLinkContainer) {
       navLinkContainer.classList.toggle("show");
     }
   }
 
   useEffect(() => {
-    console.log(adminLoggedIn);
   });
 
   return (
