@@ -23,6 +23,8 @@ const App = () => {
   const [adminLoggedIn, setAdminLoggedIn] = useState(false);
   const [newDesc, setUpdatedDescription] = useState("");
 
+  const DB = "https://mastercarebackend.onrender.com";
+
   useEffect(() => {
     // follow this pattern inside your useEffect calls:
     // first, create an async function that will wrap your axios service adapter
@@ -36,18 +38,14 @@ const App = () => {
       let descriptions = [];
 
       try {
-        const response = await fetch(
-          `http://localhost:4000/api/descriptions/`,
-          {
-            method: "GET",
-            headers: {
-              "Content-type": "application/json",
-            },
-          }
-        );
+        const response = await fetch(`${DB}/api/descriptions/`, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
 
         const result = await response.json();
-        console.log("descriptions: ", result);
         result.map((singleResult) => {
           descriptions.push(singleResult);
         });
@@ -80,13 +78,11 @@ const App = () => {
     return parsedStr;
   };
 
-  console.log(isJson({ name: "test" }));
-
   const updateDescription = async (event, id) => {
     event.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:4000/api/descriptions/updateDescription/${id}`,
+        `${DB}/api/descriptions/updateDescription/${id}`,
         {
           method: "PUT",
           headers: {
@@ -110,6 +106,7 @@ const App = () => {
       <Header
         adminLoggedIn={adminLoggedIn}
         setAdminLoggedIn={setAdminLoggedIn}
+        DB={DB}
       />
       <Routes>
         <Route
@@ -122,6 +119,7 @@ const App = () => {
               newDesc={newDesc}
               setUpdatedDescription={setUpdatedDescription}
               isJson={isJson}
+              DB={DB}
             />
           }
         />
@@ -135,6 +133,7 @@ const App = () => {
               newDesc={newDesc}
               setUpdatedDescription={setUpdatedDescription}
               isJson={isJson}
+              DB={DB}
             />
           }
         />
@@ -146,6 +145,7 @@ const App = () => {
               setManagerArray={setManagerArray}
               adminLoggedIn={adminLoggedIn}
               isJson={isJson}
+              DB={DB}
             />
           }
         />
@@ -161,6 +161,7 @@ const App = () => {
               setUpdatedDescription={setUpdatedDescription}
               updateDescription={updateDescription}
               isJson={isJson}
+              DB={DB}
             />
           }
         />
@@ -170,6 +171,7 @@ const App = () => {
             <Admin
               adminLoggedIn={adminLoggedIn}
               setAdminLoggedIn={setAdminLoggedIn}
+              DB={DB}
             />
           }
         />

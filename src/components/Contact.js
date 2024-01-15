@@ -7,7 +7,7 @@ export default function Contact({
   managerArray,
   setManagerArray,
   adminLoggedIn,
-  isJson,
+  DB,
 }) {
   const [managerName, setManagerName] = useState("");
   const [managerPhone, setManagerPhone] = useState("");
@@ -28,7 +28,6 @@ export default function Contact({
       result.map((singleResult) => {
         managers.push(singleResult);
       });
-      // console.log('MANAGERS: ', managers)
       setManagerArray(managers);
 
       return result;
@@ -40,24 +39,19 @@ export default function Contact({
   const createManager = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        "http://localhost:4000/api/managers/newManager/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: managerName,
-            title: managerTitle,
-            phone: managerPhone,
-            email: managerEmail,
-          }),
-        }
-      );
+      const response = await fetch(`${DB}/api/managers/newManager/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: managerName,
+          title: managerTitle,
+          phone: managerPhone,
+          email: managerEmail,
+        }),
+      });
       const result = await response.json();
-
-      console.log("NEW MANAGER RESULT: ", result);
 
       return result;
     } catch (err) {
@@ -67,71 +61,22 @@ export default function Contact({
 
   const deleteManager = async (id) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/managers/delete/${id}`,
-        {
-          method: "delete",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${DB}/api/managers/delete/${id}`, {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const result = await response.json();
-      console.log("delete result: ", result);
     } catch (err) {
       throw err;
-    }
-  };
-
-  const updateManagerName = async (event, id) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(
-        `http://localhost:4000/api/managers/updateManagerName/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            newName: managerName,
-          }),
-        }
-      );
-      const result = await response.json();
-      return result;
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const updateManagerTitle = async (event, id) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(
-        `http://localhost:4000/api/managers/updateManagerTitle/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            newTitle: managerTitle,
-          }),
-        }
-      );
-      const result = await response.json();
-      return result;
-    } catch (err) {
-      console.error(err);
     }
   };
 
   useEffect(() => {
     getManagers();
   }, []);
-  console.log("MANAGERS: ", managerArray);
 
   return (
     <>
@@ -154,7 +99,7 @@ export default function Contact({
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.9260380271194!2d-87.7771404!3d41.8944477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e34aa1494abc9%3A0x990ad78d4f8eeb26!2s41%20Chicago%20Ave%2C%20Oak%20Park%2C%20IL%2060302!5e0!3m2!1sen!2sus!4v1704595723146!5m2!1sen!2sus"
               width="300"
               height="200"
-              style={{border:"0"}}
+              style={{ border: "0" }}
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
@@ -163,7 +108,7 @@ export default function Contact({
         </div>
         <div id="contactInfoContainer">
           <div id="contactMcare">Mastercare Building Services</div>
-          <div id='addressContainer'>
+          <div id="addressContainer">
             <div className="addressLine">41 Chicago Ave,</div>
             <div className="addressLine2">Oak Park, IL 60302</div>
           </div>

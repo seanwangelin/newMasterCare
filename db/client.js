@@ -5,7 +5,7 @@ const { Client } = require('pg');
 const DB_NAME = 'mastercare';
 
 const DB_URL =
-  process.env.DATABASE_URL || `postgres://localhost:5432/${DB_NAME}`;
+  process.env.DATABASE_URL || `postgres://mastercare_user:2YL5Wr8Fg7RyMVN6TO0zoiWdeeIwsUIK@dpg-cmf1lu6d3nmc739d844g-a.oregon-postgres.render.com/${DB_NAME}?ssl=true`;
 
 let client;
 

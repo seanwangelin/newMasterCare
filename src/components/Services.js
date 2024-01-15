@@ -10,6 +10,7 @@ export default function Services({
   setUpdatedDescription,
   updateDescription,
   isJson,
+  DB,
 }) {
   const [newService, setNewService] = useState("");
 
@@ -17,7 +18,7 @@ export default function Services({
     let services = [];
 
     try {
-      const response = await fetch(`http://localhost:4000/api/services/`, {
+      const response = await fetch(`${DB}/api/services/`, {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -39,21 +40,17 @@ export default function Services({
   const addNewService = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/services/newService`,
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            service: newService,
-          }),
-        }
-      );
+      const response = await fetch(`${DB}/api/services/newService`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          service: newService,
+        }),
+      });
 
       const result = await response.json();
-      console.log("services result: ", result);
 
       return result;
     } catch (err) {
@@ -63,17 +60,13 @@ export default function Services({
 
   const deleteService = async (serviceID) => {
     try {
-      const response = await fetch(
-        `http://localhost:4000/api/services/delete/${serviceID}`,
-        {
-          method: "Delete",
-          headers: {
-            "Content-type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${DB}/api/services/delete/${serviceID}`, {
+        method: "Delete",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
       let result = await response.json();
-      console.log(result);
       // return result;
     } catch (err) {
       throw err;
@@ -82,9 +75,7 @@ export default function Services({
 
   useEffect(() => {
     getServices();
-    console.log(descriptionsArray);
   }, []);
-  console.log("SERVICES: ", servicesArray);
 
   return (
     <>
@@ -99,7 +90,8 @@ export default function Services({
                   onSubmit={(event) => updateDescription(event, description.id)}
                 >
                   <label>update description:</label>
-                  <textarea className='input'
+                  <textarea
+                    className="input"
                     type="text"
                     value={newDesc}
                     onChange={(event) =>

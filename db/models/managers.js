@@ -19,7 +19,6 @@ const createManager = async ({name, title, phone, email}) => {
         message: "errorrrrrr",
       };
     }
-    console.log(manager)
     return manager;
   } catch (error) {
     console.error(error);
@@ -46,7 +45,6 @@ const createNewManager = async (name, title, phone, email) => {
         message: "errorrrrrr",
       };
     }
-    console.log(manager)
     return manager;
   } catch (error) {
     console.error(error);

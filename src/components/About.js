@@ -62,8 +62,6 @@ export default function About({
             <div key="description.id" className="aboutDescriptionContainer">
               <div className="aboutDescriptionTitle">{description.title}</div>
               <div className="aboutInnerContainer">
-                {/* <img src="https://pixy.org/images/placeholder.png"/> */}
-
                 <div className="aboutDescription">
                   {isJson(description.description)}
                 </div>
