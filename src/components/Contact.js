@@ -18,7 +18,7 @@ export default function Contact({
     let managers = [];
 
     try {
-      const response = await fetch("http://localhost:4000/api/managers/", {
+      const response = await fetch(`${DB}/api/managers/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
