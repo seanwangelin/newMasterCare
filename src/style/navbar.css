@@ -1,5 +1,6 @@
 #navbar {
-    transition: background-color 0.5s ease;
+    /* transition: background-color 0.5s ease; */
+    background-color:rgba(48, 96, 62, 1);
     height: 100px;
     display: flex;
     flex-direction: row;

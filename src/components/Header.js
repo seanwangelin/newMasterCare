@@ -11,17 +11,19 @@ export default function Navbar({ adminLoggedIn }) {
     window.location.reload();
   };
 
-  window.addEventListener("scroll", () => {
-    const scrollPosition = window.scrollY;
-    const threshold = 100;
-    const scrollChangeHeader = document.querySelector("#navbar");
+          //Scroll function
 
-    if (scrollPosition > threshold) {
-      scrollChangeHeader.classList.add("scrolled");
-    } else {
-      scrollChangeHeader.classList.remove("scrolled");
-    }
-  });
+  // window.addEventListener("scroll", () => {
+  //   const scrollPosition = window.scrollY;
+  //   const threshold = 100;
+  //   const scrollChangeHeader = document.querySelector("#navbar");
+
+  //   if (scrollPosition > threshold) {
+  //     scrollChangeHeader.classList.add("scrolled");
+  //   } else {
+  //     scrollChangeHeader.classList.remove("scrolled");
+  //   }
+  // });
 
   function toggleMenu() {
     const navLinkContainer = document.getElementById("navLinkContainer");
