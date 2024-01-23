@@ -123,6 +123,12 @@
     border-radius: 10px;
 }
 
+.contactLineContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+}
+
 #managerHomePage {
     text-align: center;
     font-size: 25px;
@@ -132,6 +138,7 @@
 
 #contactMainPhone {
     font-size: 18px;
+    margin-left: .3vw;
 }
 
 a {
