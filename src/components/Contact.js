@@ -112,9 +112,18 @@ export default function Contact({
             <div className="addressLine">41 Chicago Ave,</div>
             <div className="addressLine2">Oak Park, IL 60302</div>
           </div>
-          <a href="tel:7083582634" id="contactMainPhone">
-            708-358-2634
-          </a>
+          <div className="contactLineContainer">
+            <div>Direct Contact: </div>
+            <a href="tel:7083582634" id="contactMainPhone">
+              708-358-2634
+            </a>
+          </div>
+          <div className="contactLineContainer">
+            <div>Emergency Contact: </div>
+            <a href="tel:7084068645" id="contactMainPhone">
+              708-406-8645
+            </a>
+          </div>
         </div>
       </div>
       <div id="managerCardContainer">
